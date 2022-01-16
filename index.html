@@ -15,16 +15,37 @@
         {
           name: 'SKI Harusák',
           base: 'https://image.sjezdovky.cz/script/GetImage.php',
-          webcams: [
+          images: [
             '?folder=nmnmsjez1&amp;amp;width=0&amp;amp;height=0&amp;amp;p49=0&amp;amp;rand=1641647737925',
             '?folder=nmnmsjez2&amp;amp;width=0&amp;amp;height=0&amp;amp;p49=0&amp;amp;rand=1641647737925',
             '?folder=nmnmsjez3&amp;amp;width=0&amp;amp;height=0&amp;amp;p49=0&amp;amp;rand=1641647737925',
           ],
+          videos: [],
+        },
+        {
+          name: 'Červenohorské sedlo',
+          base: '',
+          images: [],
+          videos: [
+            'http://sts106.feratel.co.at/streams/stsstore102/1/02153_61e3fa2a-de03Vid.mp4?dcsdesign=WTP_sguide.cz',
+          ],
+        },
+        {
+          name: 'Dolní Morava',
+          base: '',
+          images: [
+            'http://exports.holidayinfo.cz/loc_cams_lastimage.php?dc=62cee487c4ebe314&amp;camid=2119',
+            'https://kamery.services.dolnimorava.cz/kamery/vez.jpg',
+            'https://kamery.services.dolnimorava.cz/kamery/slamnik.jpg',
+            'https://kamery.services.dolnimorava.cz/kamery/Skalka1.jpg',
+            'https://kamery.services.dolnimorava.cz/kamery/stola.jpg',
+          ],
+          videos: [],
         },
         {
           name: 'Stuhleck',
           base: 'https://www.stuhleck.at/data/stuhleck-data/',
-          webcams: [
+          images: [
             'webcam/02_Ganzebenabfahrt.JPG?a=1',
             'webcam1/05_Panoramarestaurant-W11.jpg?a=1',
             'webcam/09_Lakeview.jpg?a=1',
@@ -36,24 +57,29 @@
             'ftp1/GasthausWinterWebCam.jpg?a=1',
             'webcam/01_Panoramaansicht.jpg?a=1',
           ],
+          videos: [],
         },
         {
-          name: 'Dolní Morava',
+          name: 'Hochkar',
           base: '',
-          webcams: [
-            'http://exports.holidayinfo.cz/loc_cams_lastimage.php?dc=62cee487c4ebe314&amp;camid=2119',
-            'https://kamery.services.dolnimorava.cz/kamery/vez.jpg',
-            'https://kamery.services.dolnimorava.cz/kamery/slamnik.jpg',
-            'https://kamery.services.dolnimorava.cz/kamery/Skalka1.jpg',
-            'https://kamery.services.dolnimorava.cz/kamery/stola.jpg',
+          images: [],
+          videos: [
+            'http://sts101.feratel.co.at/streams/stsstore103/1/01584_61e3fcfa-6d6fVid.mp4?dcsdesign=WTP_sguide.cz',
           ],
+        },
+        {
+          name: 'Dachstein',
+          base: '',
+          images: [],
+          videos: ['https://sts060.feratel.co.at/streams/stsstore054/1/05420_61e3fba2-0ef9Vid.mp4?dcsdesign=feratel4'],
         },
       ]
 
       const wrapper = css`
         @import 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css';
 
-        img {
+        img,
+        video {
           max-width: 100%;
         }
       `
@@ -73,10 +99,18 @@
               </nav>
               <div style="display: flex">
                 <div class="row">
-                  ${sites[sel].webcams.map(
-                    (w, i) =>
+                  ${sites[sel].images.map(
+                    (src, i) =>
                       html`<div class="col-lg-6 col-sm-12 mb-4">
-                        <img key=${i} class="rounded" src=${sites[sel].base + w} />
+                        <img key=${src} class="rounded" src=${sites[sel].base + src} />
+                      </div>`
+                  )}
+                  ${sites[sel].videos.map(
+                    (src, i) =>
+                      html`<div class="col-lg-6 col-sm-12 mb-4">
+                        <video key=${src} class="rounded" controls>
+                          <source src=${sites[sel].base + src} />
+                        </video>
                       </div>`
                   )}
                 </div>
