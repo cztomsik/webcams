@@ -14,17 +14,15 @@
       const sites = [
         {
           name: 'SKI Harusák',
-          base: 'https://image.sjezdovky.cz/script/GetImage.php',
           images: [
-            '?folder=nmnmsjez1&amp;amp;width=0&amp;amp;height=0&amp;amp;p49=0&amp;amp;rand=1641647737925',
-            '?folder=nmnmsjez2&amp;amp;width=0&amp;amp;height=0&amp;amp;p49=0&amp;amp;rand=1641647737925',
-            '?folder=nmnmsjez3&amp;amp;width=0&amp;amp;height=0&amp;amp;p49=0&amp;amp;rand=1641647737925',
+            'https://image.sjezdovky.cz/script/GetImage.php?folder=nmnmsjez1&amp;amp;width=0&amp;amp;height=0&amp;amp;p49=0&amp;amp;rand=1641647737925',
+            'https://image.sjezdovky.cz/script/GetImage.php?folder=nmnmsjez2&amp;amp;width=0&amp;amp;height=0&amp;amp;p49=0&amp;amp;rand=1641647737925',
+            'https://image.sjezdovky.cz/script/GetImage.php?folder=nmnmsjez3&amp;amp;width=0&amp;amp;height=0&amp;amp;p49=0&amp;amp;rand=1641647737925',
           ],
           videos: [],
         },
         {
           name: 'Červenohorské sedlo',
-          base: '',
           images: [],
           videos: [
             'http://sts106.feratel.co.at/streams/stsstore102/1/02153_61e3fa2a-de03Vid.mp4?dcsdesign=WTP_sguide.cz',
@@ -32,36 +30,34 @@
         },
         {
           name: 'Dolní Morava',
-          base: '',
           images: [
-            'http://exports.holidayinfo.cz/loc_cams_lastimage.php?dc=62cee487c4ebe314&amp;camid=2119',
             'https://kamery.services.dolnimorava.cz/kamery/vez.jpg',
             'https://kamery.services.dolnimorava.cz/kamery/slamnik.jpg',
             'https://kamery.services.dolnimorava.cz/kamery/Skalka1.jpg',
             'https://kamery.services.dolnimorava.cz/kamery/stola.jpg',
           ],
-          videos: [],
+          videos: [
+            'https://exports.holidayinfo.cz/loc_cams_lastvideo_videofile.php?dc=62cee487c4ebe314&camid=2119&ext=mp4&ts=1642331805',
+          ],
         },
         {
           name: 'Stuhleck',
-          base: 'https://www.stuhleck.at/data/stuhleck-data/',
           images: [
-            'webcam/02_Ganzebenabfahrt.JPG?a=1',
-            'webcam1/05_Panoramarestaurant-W11.jpg?a=1',
-            'webcam/09_Lakeview.jpg?a=1',
-            'webcam/08_BeginnerPark-Bergstation-Promibahn.jpg?a=1',
-            'webcam/03_Talstation-Steinbachalm.jpg?a=1',
-            'webcam/04_Bergstation-Stuhleckbahn.jpg?a=1',
-            'webcam/11_Schieferwiese.jpg?a=1',
-            'webcam/12_Sonnenlift.jpg?a=1',
-            'ftp1/GasthausWinterWebCam.jpg?a=1',
-            'webcam/01_Panoramaansicht.jpg?a=1',
+            'https://www.stuhleck.at/data/stuhleck-data/webcam/02_Ganzebenabfahrt.JPG?a=1',
+            'https://www.stuhleck.at/data/stuhleck-data/webcam1/05_Panoramarestaurant-W11.jpg?a=1',
+            'https://www.stuhleck.at/data/stuhleck-data/webcam/09_Lakeview.jpg?a=1',
+            'https://www.stuhleck.at/data/stuhleck-data/webcam/08_BeginnerPark-Bergstation-Promibahn.jpg?a=1',
+            'https://www.stuhleck.at/data/stuhleck-data/webcam/03_Talstation-Steinbachalm.jpg?a=1',
+            'https://www.stuhleck.at/data/stuhleck-data/webcam/04_Bergstation-Stuhleckbahn.jpg?a=1',
+            'https://www.stuhleck.at/data/stuhleck-data/webcam/11_Schieferwiese.jpg?a=1',
+            'https://www.stuhleck.at/data/stuhleck-data/webcam/12_Sonnenlift.jpg?a=1',
+            'https://www.stuhleck.at/data/stuhleck-data/ftp1/GasthausWinterWebCam.jpg?a=1',
+            'https://www.stuhleck.at/data/stuhleck-data/webcam/01_Panoramaansicht.jpg?a=1',
           ],
           videos: [],
         },
         {
           name: 'Hochkar',
-          base: '',
           images: [],
           videos: [
             'http://sts101.feratel.co.at/streams/stsstore103/1/01584_61e3fcfa-6d6fVid.mp4?dcsdesign=WTP_sguide.cz',
@@ -69,7 +65,6 @@
         },
         {
           name: 'Dachstein',
-          base: '',
           images: [],
           videos: ['https://sts060.feratel.co.at/streams/stsstore054/1/05420_61e3fba2-0ef9Vid.mp4?dcsdesign=feratel4'],
         },
@@ -102,14 +97,14 @@
                   ${sites[sel].images.map(
                     (src, i) =>
                       html`<div class="col-lg-6 col-sm-12 mb-4">
-                        <img key=${src} class="rounded" src=${sites[sel].base + src} />
+                        <img key=${src} class="rounded" src=${src} />
                       </div>`
                   )}
                   ${sites[sel].videos.map(
                     (src, i) =>
                       html`<div class="col-lg-6 col-sm-12 mb-4">
                         <video key=${src} class="rounded" controls>
-                          <source src=${sites[sel].base + src} />
+                          <source src=${src} />
                         </video>
                       </div>`
                   )}
